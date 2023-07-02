@@ -13,7 +13,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '16.x' # Node.jsのバージョンを指定します
+          node-version: '16.x' # Node.jsのバージョンに16系を指定します
       - run: yarn install
       - run: yarn generate
       - uses: peaceiris/actions-gh-pages@v3
