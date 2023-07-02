@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{467:function(n,e,l){"use strict";l.r(e);var t={components:{Clanedar:l(177).default},name:"IndexPage"},o=l(78),component=Object(o.a)(t,(function(){return(0,this._self._c)("clanedar")}),[],!1,null,null,null);e.default=component.exports;installComponents(component,{Clanedar:l(177).default})}}]);
