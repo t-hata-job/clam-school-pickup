@@ -146,7 +146,8 @@ export default {
     },
     updateRange({ start, end }) {
       var month =
-        start.year.toString() + start.month.toString().padStart(2, '0')
+        start.getFullYear().toString() +
+        (start.getMonth() + 1).toString().padStart(2, '0')
       this.$axios
         .get(
           'https://script.google.com/macros/s/AKfycbwiwX61YJBVL8-YqO8KpptcVF8QBMT-BU7jAePQX7gk-3uzGT0mEE_5woz3elGiT3F5/exec?month=' +
