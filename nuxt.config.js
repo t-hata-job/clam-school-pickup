@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - clam-school-calendar',
-    title: 'clam-school-calendar',
+    titleTemplate: '%s - clam-school-pickup',
+    title: 'clam-school-pickup',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -22,6 +22,11 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+
+  router: {
+    base: '/clam-school-pickup/'
+  },
+
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
