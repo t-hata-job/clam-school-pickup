@@ -24,9 +24,12 @@ export default {
   components: true,
 
   router: {
-    base: '/clam-school-pickup/'
+    base: '/clam-school-pickup/',
   },
 
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL,
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

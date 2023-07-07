@@ -145,14 +145,11 @@ export default {
       nativeEvent.stopPropagation()
     },
     updateRange({ start, end }) {
+      alert(this.$config.apiURL)
       var month =
-        start.year.toString() +
-        start.month.toString().padStart(2, '0')
+        start.year.toString() + start.month.toString().padStart(2, '0')
       this.$axios
-        .get(
-          'https://script.google.com/macros/s/AKfycbwiwX61YJBVL8-YqO8KpptcVF8QBMT-BU7jAePQX7gk-3uzGT0mEE_5woz3elGiT3F5/exec?month=' +
-            month
-        )
+        .get(this.$config.apiURL + '?month=' + month)
         .then((res) => {
           const events = []
           res.data.forEach((x) => {
