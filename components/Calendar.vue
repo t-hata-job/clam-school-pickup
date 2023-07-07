@@ -147,12 +147,9 @@ export default {
     updateRange({ start, end }) {
       alert(this.$config.apiURL)
       var month =
-        start.year.toString() +
-        start.month.toString().padStart(2, '0')
+        start.year.toString() + start.month.toString().padStart(2, '0')
       this.$axios
-        .get(
-          this.$config.apiURL + '?month=' + month
-        )
+        .get(this.$config.apiURL + '?month=' + month)
         .then((res) => {
           const events = []
           res.data.forEach((x) => {
