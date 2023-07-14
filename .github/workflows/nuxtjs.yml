@@ -78,7 +78,11 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
-
+      - name: Debug API_URL
+        run: echo "API_URL is $API_URL"
+        env: 
+          API_URL: ${{ secrets.API_URL }}
+          
   # Deployment job
   deploy:
     environment:
