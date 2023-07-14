@@ -72,6 +72,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        env: 
+          API_URL: ${{ secrets.API_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
@@ -88,5 +90,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        env: 
-          API_URL: ${{ secrets.API_URL }}
