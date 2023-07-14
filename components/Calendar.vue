@@ -145,7 +145,6 @@ export default {
       nativeEvent.stopPropagation()
     },
     updateRange({ start, end }) {
-      alert(this.$config.apiURL)
       var month =
         start.year.toString() + start.month.toString().padStart(2, '0')
       this.$axios
