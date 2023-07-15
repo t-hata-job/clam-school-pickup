@@ -104,7 +104,7 @@ export default {
     selectedOpen: false,
     events: [],
     colors: ['blue', 'green', 'orange'],
-    names: ['はた', 'かとう', 'なかおか'],
+    names: ['あいうえお', 'かきくけこ', 'さしすせそ'],
   }),
   mounted() {
     this.$refs.calendar.checkChange()
@@ -164,7 +164,7 @@ export default {
           this.events = events
         })
         .catch((err) => {
-          alert(err)
+          //エラーはスルーします
         })
     },
     rnd(a, b) {
