@@ -23,20 +23,6 @@
                 <v-icon right> mdi-menu-down </v-icon>
               </v-btn>
             </template>
-            <v-list>
-              <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = '4day'">
-                <v-list-item-title>4 days</v-list-item-title>
-              </v-list-item>
-            </v-list>
           </v-menu>
         </v-toolbar>
       </v-sheet>
@@ -47,7 +33,7 @@
           color="primary"
           :events="events"
           :event-color="getEventColor"
-          :type="type"
+          :type="month"
           @click:event="showEvent"
           @click:more="viewDay"
           @click:date="viewDay"
@@ -104,8 +90,8 @@ export default {
     selectedElement: null,
     selectedOpen: false,
     events: [],
-    colors: ['blue', 'green', 'orange'],
-    names: ['あいうえお', 'かきくけこ', 'さしすせそ'],
+    colors: [],
+    names: [],
   }),
   mounted() {
     this.$refs.calendar.checkChange()
@@ -174,9 +160,6 @@ export default {
         .catch((err) => {
           //エラーはスルーします
         })
-    },
-    rnd(a, b) {
-      return Math.floor((b - a + 1) * Math.random()) + a
     },
   },
 }
