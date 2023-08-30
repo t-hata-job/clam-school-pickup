@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: () => ({
     focus: '',
@@ -147,8 +148,15 @@ export default {
     updateRange({ start, end }) {
       var month =
         start.year.toString() + start.month.toString().padStart(2, '0')
-      this.$axios
-        .get(this.$config.apiURL + '?month=' + month)
+      const api = axios.create({
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      api
+        .get(this.$config.apiURL + '?month=' + month, {
+          headers: {
+            'Accept': 'application/json',
+          }
+        })
         .then((res) => {
           const events = []
           res.data.forEach((x) => {
