@@ -7,10 +7,10 @@
             Today
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="prev">
-            <v-icon small> mdi-chevron-left </v-icon>
+            <v-icon large> mdi-chevron-left </v-icon>
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="next">
-            <v-icon small> mdi-chevron-right </v-icon>
+            <v-icon large> mdi-chevron-right </v-icon>
           </v-btn>
           <v-toolbar-title v-if="$refs.calendar">
             {{ $refs.calendar.title }}
@@ -26,7 +26,6 @@
           :events="events"
           :event-color="getEventColor"
           :type="month"
-          @click:event="showEvent"
           @click:more="viewDay"
           @click:date="viewDay"
           @change="updateRange"
