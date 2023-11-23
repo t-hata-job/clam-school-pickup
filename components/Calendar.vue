@@ -25,7 +25,7 @@
           color="primary"
           :events="events"
           :event-color="getEventColor"
-          :type="type"
+          :type="month"
           @click:more="viewDay"
           @click:date="viewDay"
           @change="updateRange"
@@ -122,10 +122,52 @@ export default {
       }
     },
     showEvent({ nativeEvent, event }) {
-      // ... (既存のshowEventメソッドの内容) ...
+      const open = () => {
+        this.selectedEvent = event
+        this.selectedElement = nativeEvent.target
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => (this.selectedOpen = true))
+        )
+      }
+
+      if (this.selectedOpen) {
+        this.selectedOpen = false
+        requestAnimationFrame(() => requestAnimationFrame(() => open()))
+      } else {
+        open()
+      }
+
+      nativeEvent.stopPropagation()
     },
     updateRange({ start, end }) {
-      // ... (既存のupdateRangeメソッドの内容) ...
+      var month =
+        start.year.toString() + start.month.toString().padStart(2, '0')
+      const api = axios.create({
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      api
+        .get(this.$config.apiURL + '?month=' + month, {
+          headers: {
+            'Accept': 'application/json',
+          }
+        })
+        .then((res) => {
+          const events = []
+          res.data.forEach((x) => {
+            var date = new Date(x[0])
+            events.push({
+              name: x[1],
+              start: date,
+              end: date,
+              color: x[2],
+              timed: false,
+            })
+          })
+          this.events = events
+        })
+        .catch((err) => {
+          //エラーはスルーします
+        })
     },
   },
 };
